@@ -1,0 +1,35 @@
+data_file = string()
+parameters_file = string()
+sed_modules = cigale_string_list()
+analysis_method = string()
+cores = integer(min=1)
+bands = cigale_string_list()
+properties = cigale_string_list()
+additionalerror = float(min=0.0)
+[sed_modules_params]
+  [[sfhdelayed]]
+    tau_main = cigale_list()
+    age_main = cigale_list(dtype=int, minvalue=0.)
+    tau_burst = cigale_list()
+    age_burst = cigale_list(dtype=int, minvalue=1.)
+    f_burst = cigale_list(minvalue=0., maxvalue=0.9999)
+    sfr_A = cigale_list(minvalue=0.)
+    normalise = boolean()
+  [[bc03]] #[[cb19]]
+    imf = cigale_list(dtype=int, options=0. & 1.)
+    metallicity = cigale_list(options=0.0001 & 0.0004 & 0.004 & 0.008 & 0.02 & 0.05)
+    separation_age = cigale_list(dtype=int, minvalue=0)
+  [[nebular]]
+    logU = cigale_list(options=-4.0 & -3.9 & -3.8 & -3.7 & -3.6 & -3.5 & -3.4 & -3.3 & -3.2 & -3.1 & -3.0 & -2.9 & -2.8 & -2.7 & -2.6 & -2.5 & -2.4 & -2.3 & -2.2 & -2.1 & -2.0 & -1.9 & -1.8 & -1.7 & -1.6 & -1.5 & -1.4 & -1.3 & -1.2 & -1.1 & -1.0)
+    zgas = cigale_list(options=0.0001 & 0.0004 & 0.001 & 0.002 & 0.0025 & 0.003 & 0.004 & 0.005 & 0.006 & 0.007 & 0.008 & 0.009 & 0.011 & 0.012 & 0.014 & 0.016 & 0.019 & 0.020 & 0.022 & 0.025 & 0.03 & 0.033 & 0.037 & 0.041 & 0.046 & 0.051)
+    ne = cigale_list(options=10 & 100 & 1000)
+    f_esc = cigale_list(minvalue=0., maxvalue=1.)
+    f_dust = cigale_list(minvalue=0., maxvalue=1.)
+    lines_width = cigale_list(minvalue=0.)
+    emission = boolean()
+  [[redshifting]]
+    redshift = cigale_list(minvalue=0.)
+[analysis_params]
+  variables = cigale_string_list()
+  save_sed = boolean()
+  blocks = integer(min=1)
